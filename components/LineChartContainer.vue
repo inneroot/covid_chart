@@ -23,13 +23,40 @@ export default {
       responseArr: [],
       chartOptions: {
         responsive: true,
-        maintainAspectRatio: false
+        title: {
+          display: true,
+          text: 'Covid19 Chart'
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
+        scales: {
+          xAxes: [
+            {
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Month'
+              }
+            }
+          ],
+          yAxes: [
+            {
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Value'
+              }
+            }
+          ]
+        }
       }
     }
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false
   },
   async mounted() {
     this.loaded = false
@@ -49,14 +76,21 @@ export default {
       console.log(this.responseArr)
     },
     fillData() {
-      let iterator = 1
+      const LastNdays = 30
+      let iterator = 0
       const daysArr = []
       const ConfirmedArr = []
+      const DeathsArr = []
+      const RecoveredArr = []
       this.responseArr.forEach((day) => {
-        daysArr.push(iterator)
-        ConfirmedArr.push(day.Confirmed)
-
         iterator++
+        if (iterator < this.responseArr.length - LastNdays) {
+          return
+        }
+        daysArr.push(this.ConvertDate(day.Date))
+        ConfirmedArr.push(day.Confirmed)
+        DeathsArr.push(day.Deaths)
+        RecoveredArr.push(day.Recovered)
       })
       this.datacollection = {
         labels: daysArr,
@@ -64,18 +98,48 @@ export default {
           {
             label: 'Confirmed',
             backgroundColor: '#f87979',
+            borderColor: '#FF3E68',
+            fill: false,
             data: ConfirmedArr
+          },
+          {
+            label: 'Recovered',
+            backgroundColor: '#4BC0C0',
+            borderColor: '#4BC0C0',
+            fill: false,
+            data: RecoveredArr
+          },
+          {
+            label: 'Deaths',
+            backgroundColor: '#FFCD56',
+            borderColor: '#FFCD56',
+            fill: false,
+            data: DeathsArr
           }
         ]
       }
+    },
+    ConvertDate(theDate) {
+      const months = [
+        'Jan.',
+        'Feb.',
+        'Mar.',
+        'Apr.',
+        'May',
+        'Jun.',
+        'Jul.',
+        'Aug.',
+        'Sep.',
+        'Oct.',
+        'Nov.',
+        'Dec.'
+      ]
+      const srtDate = String(theDate)
+      const month = months[parseInt(srtDate.slice(5, 7)) - 1]
+      return month + ' ' + srtDate.slice(8, 10)
     }
   }
 }
 </script>
 
-<style>
-.small {
-  max-width: 1000px;
-  margin: 150px auto;
-}
-</style>
+<style></style>
