@@ -1,20 +1,17 @@
 <template>
   <div class="container">
     <div>
-      <logo />
-      <RandomChart />
+      <LineChartContainer />
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import RandomChart from '~/components/RandomChart.vue'
+import LineChartContainer from '~/components/LineChartContainer.vue'
 
 export default {
   components: {
-    Logo,
-    RandomChart
+    LineChartContainer
   }
 }
 </script>

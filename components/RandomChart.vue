@@ -23,7 +23,7 @@ export default {
   methods: {
     fillData() {
       this.datacollection = {
-        labels: [this.getRandomInt(), this.getRandomInt()],
+        labels: [1, 100],
         datasets: [
           {
             label: 'Data One',
