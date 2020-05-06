@@ -1,12 +1,14 @@
 <template>
   <div class="ChartWrapper">
     <DayPlus v-if="loaded" :day-data="lustDayData" />
-    <LineChart
-      v-if="loaded"
-      :chart-data="datacollection"
-      :options="chartOptions"
-    />
-    <p v-else>Loading data ...</p>
+    <div class="chart_container">
+      <LineChart
+        v-if="loaded"
+        :chart-data="datacollection"
+        :options="chartOptions"
+      />
+      <p v-else>Loading data ...</p>
+    </div>
   </div>
 </template>
 
@@ -77,9 +79,12 @@ export default {
         redirect: 'follow'
       }
       const url = 'https://api.covid19api.com/total/dayone/country/russia'
+      try{
       const response = await fetch(url, requestOptions)
       this.responseArr = await response.json()
-      console.log(this.responseArr)
+      } catch(e){
+        console.log(e)
+      }      
     },
     fillData() {
       const LastNdays = 30
