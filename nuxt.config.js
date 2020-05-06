@@ -1,8 +1,15 @@
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/covid_chart/'
+  }
+} : {}
+
 export default {
   mode: 'spa',
   /*
    ** Headers of the page
    */
+  ...routerBase,
   head: {
     title: process.env.npm_package_name || '',
     meta: [
