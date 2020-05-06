@@ -1,10 +1,13 @@
 <template>
-  <div class="small">
+  <div class="ChartWrapper">
     <LineChart
       v-if="loaded"
       :chart-data="datacollection"
       :options="chartOptions"
+      :height="700"
+      :width="1200"
     />
+    <p v-else>Loading data ...</p>
   </div>
 </template>
 
@@ -22,6 +25,7 @@ export default {
       datacollection: {},
       responseArr: [],
       chartOptions: {
+        maintainAspectRatio: false,
         responsive: true,
         title: {
           display: true,
@@ -41,7 +45,7 @@ export default {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Month'
+                labelString: 'Date'
               }
             }
           ],
@@ -96,25 +100,25 @@ export default {
         labels: daysArr,
         datasets: [
           {
-            label: 'Confirmed',
-            backgroundColor: '#f87979',
-            borderColor: '#FF3E68',
-            fill: false,
-            data: ConfirmedArr
+            label: 'Deaths',
+            backgroundColor: 'rgba(255, 205, 86, 0.5)',
+            borderColor: '#FFCD56',
+            fill: true,
+            data: DeathsArr
           },
           {
             label: 'Recovered',
-            backgroundColor: '#4BC0C0',
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
             borderColor: '#4BC0C0',
-            fill: false,
+            fill: true,
             data: RecoveredArr
           },
           {
-            label: 'Deaths',
-            backgroundColor: '#FFCD56',
-            borderColor: '#FFCD56',
-            fill: false,
-            data: DeathsArr
+            label: 'Confirmed',
+            backgroundColor: 'rgba(255, 99, 132, 0.1)',
+            borderColor: '#FF3E68',
+            fill: true,
+            data: ConfirmedArr
           }
         ]
       }

@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div>
-      <LineChartContainer />
-    </div>
+    <LineChartContainer />
   </div>
 </template>
 

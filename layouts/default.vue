@@ -4,8 +4,4 @@
   </div>
 </template>
 
-<style>
-.bodycontainer {
-  box-sizing: border-box;
-}
-</style>
+<style></style>
