@@ -1,11 +1,10 @@
 <template>
   <div class="ChartWrapper">
+    <DayPlus v-if="loaded" :day-data="lustDayData" />
     <LineChart
       v-if="loaded"
       :chart-data="datacollection"
       :options="chartOptions"
-      :height="700"
-      :width="1200"
     />
     <p v-else>Loading data ...</p>
   </div>
@@ -13,23 +12,26 @@
 
 <script>
 import LineChart from './LineChart.js'
+import DayPlus from '~/components/DayPlus.vue'
 
 export default {
   name: 'LineChartContainer',
   components: {
-    LineChart
+    LineChart,
+    DayPlus
   },
   data() {
     return {
       loaded: false,
       datacollection: {},
+      lustDayData: {},
       responseArr: [],
       chartOptions: {
         maintainAspectRatio: false,
         responsive: true,
         title: {
           display: true,
-          text: 'Covid19 Chart'
+          text: 'Russia Covid19 Chart'
         },
         tooltips: {
           mode: 'index',
@@ -96,6 +98,24 @@ export default {
         DeathsArr.push(day.Deaths)
         RecoveredArr.push(day.Recovered)
       })
+      this.lustDayData = {
+        newConfirmed:
+          ConfirmedArr[ConfirmedArr.length - 1] -
+          ConfirmedArr[ConfirmedArr.length - 2],
+        newDeaths:
+          DeathsArr[DeathsArr.length - 1] - DeathsArr[DeathsArr.length - 2],
+        newRecovered:
+          RecoveredArr[RecoveredArr.length - 1] -
+          RecoveredArr[RecoveredArr.length - 2],
+        lustConfirmed:
+          ConfirmedArr[ConfirmedArr.length - 2] -
+          ConfirmedArr[ConfirmedArr.length - 3],
+        lustDeaths:
+          DeathsArr[DeathsArr.length - 2] - DeathsArr[DeathsArr.length - 3],
+        lustRecovered:
+          RecoveredArr[RecoveredArr.length - 2] -
+          RecoveredArr[RecoveredArr.length - 3]
+      }
       this.datacollection = {
         labels: daysArr,
         datasets: [
