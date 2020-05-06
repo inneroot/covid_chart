@@ -19,5 +19,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'max-len': 'warn',
+    'prettier/prettier' : 'warn'
   }
 }
