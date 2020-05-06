@@ -1,9 +1,23 @@
 <template>
-  <div class="summary">
+  <div class="container">
     <p>New day statistic:</p>
-    <DayInfo :current="dayData.newConfirmed" :change="confirmedChange">Confirmed</DayInfo>
-    <DayInfo :current="dayData.recoveredChange" :change="recoveredChange">Recovered</DayInfo>
-    <DayInfo :current="dayData.newDeaths" :change="deathsChange">Confirmed</DayInfo>
+    <div class="summary">
+      <DayInfo 
+        :current="dayData.newConfirmed"
+        :change="confirmedChange">
+        Confirmed
+      </DayInfo>
+      <DayInfo
+        :current="dayData.newRecovered"
+        :change="recoveredChange">
+        Recovered
+      </DayInfo>
+      <DayInfo
+        :current="dayData.newDeaths"
+        :change="deathsChange">
+        Confirmed
+      </DayInfo>
+    </div>
   </div>
 </template>
 
@@ -15,10 +29,24 @@ export default {
   components: {
     DayInfo
   },
-  props: ['dayData'],
-  data() {
-    return {
+  props: {
+    dayData: {
+      type: Object,
+      default() {
+        return {
+          newConfirmed: 0,
+          newRecovered: 0,
+          newDeaths: 0,
+          lustConfirmed: 0,
+          lustRecovered: 0,
+          lustDeaths: 0
+        }
+      },
+      required: true
     }
+  },
+  data() {
+    return {}
   },
   computed: {
     confirmedChange() {
@@ -35,7 +63,10 @@ export default {
 </script>
 
 <style>
-.summary {
+.container{
   display: block;
+}
+.summary {
+  display: flex;
 }
 </style>

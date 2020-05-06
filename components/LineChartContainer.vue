@@ -79,12 +79,12 @@ export default {
         redirect: 'follow'
       }
       const url = 'https://api.covid19api.com/total/dayone/country/russia'
-      try{
-      const response = await fetch(url, requestOptions)
-      this.responseArr = await response.json()
-      } catch(e){
-        console.log(e)
-      }      
+      try {
+        const response = await fetch(url, requestOptions)
+        this.responseArr = await response.json()
+      } catch (e) {
+        throw new Error(e.message)
+      }
     },
     fillData() {
       const LastNdays = 30

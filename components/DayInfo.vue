@@ -1,15 +1,17 @@
 <template>
-    <p>
-      <slot></slot> {{ current_view }}
-      (<span v-if="current_change >= 0">+</span>
-      {{ current_change }})
-    </p>
+  <div class="container">
+    <slot/> {{ current_view }} (<span v-if="current_change >= 0">+</span>
+    {{ current_change }})
+  </div>
 </template>
 
 <script>
-export default {    
+export default {
   name: 'DayPlus',
-  props: ['current', 'change'],
+  props: {
+    current: Number,
+    change: Number
+  },
   data() {
     return {
       current_view: 0,
@@ -19,15 +21,15 @@ export default {
   mounted() {
     this.current_view = 0
     this.current_change = 0
-    const id = setInterval(frame, 5);
+    const id = setInterval(frame, 5)
     function frame() {
-    if (this.current_view >= this.current - 10) {
-      clearInterval(id);
-      this.current_view = this.current
-    } else {
-      this.current_view+=10
+      if (this.current_view >= this.current - 10) {
+        clearInterval(id)
+        this.current_view = this.current
+      } else {
+        this.current_view += 10
+      }
     }
-  }
     this.animate()
   },
   methods: {
@@ -39,4 +41,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.container {
+  margin: 15px;
+  padding: 15px;
+}</style>
