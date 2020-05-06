@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <p>New day statistic:</p>
+    <p>New day statistic: {{dayData.population}}</p>
     <div class="summary">
       <DayInfo 
         :current="dayData.newConfirmed"
@@ -39,7 +39,8 @@ export default {
           newDeaths: 0,
           lustConfirmed: 0,
           lustRecovered: 0,
-          lustDeaths: 0
+          lustDeaths: 0,
+          population: 0
         }
       },
       required: true

@@ -1,5 +1,9 @@
 <template>
   <div class="ChartWrapper">
+    <form v-on:submit.prevent="onSubmit">
+      <input v-model="form_input" placeholder="country">
+      <button type="submit" valute=submit>submit</button>
+      </form>
     <DayPlus v-if="loaded" :day-data="lustDayData" />
     <div class="chart_container">
       <LineChart
@@ -15,6 +19,7 @@
 <script>
 import LineChart from './LineChart.js'
 import DayPlus from '~/components/DayPlus.vue'
+import {ApiMap} from '~/components/ApiSlugs.js'
 
 export default {
   name: 'LineChartContainer',
@@ -24,6 +29,7 @@ export default {
   },
   data() {
     return {
+      form_input: "",
       loaded: false,
       datacollection: {},
       lustDayData: {},
@@ -33,7 +39,7 @@ export default {
         responsive: true,
         title: {
           display: true,
-          text: 'Russia Covid19 Chart'
+          text: 'Covid19 Chart'
         },
         tooltips: {
           mode: 'index',
@@ -73,12 +79,23 @@ export default {
     this.loaded = true
   },
   methods: {
-    async getData() {
+    async onSubmit() {
+      this.loaded = false
+      await this.getData(this.form_input)
+      this.fillData()
+      this.loaded = true
+    },
+    async getData(country) {
+      this.form_input = country
       const requestOptions = {
         method: 'GET',
         redirect: 'follow'
       }
-      const url = 'https://api.covid19api.com/total/dayone/country/russia'
+      if (!country) {
+        country = "russia"
+      }
+
+      const url = 'https://api.covid19api.com/total/dayone/country/'+ country
       try {
         const response = await fetch(url, requestOptions)
         this.responseArr = await response.json()
@@ -87,6 +104,7 @@ export default {
       }
     },
     fillData() {
+      console.log(ApiMap.get("Russian Federation"))
       const LastNdays = 30
       let iterator = 0
       const daysArr = []
@@ -119,7 +137,8 @@ export default {
           DeathsArr[DeathsArr.length - 2] - DeathsArr[DeathsArr.length - 3],
         lustRecovered:
           RecoveredArr[RecoveredArr.length - 2] -
-          RecoveredArr[RecoveredArr.length - 3]
+          RecoveredArr[RecoveredArr.length - 3],
+        population: ApiMap.get(this.responseArr[0].Country).Population
       }
       this.datacollection = {
         labels: daysArr,
