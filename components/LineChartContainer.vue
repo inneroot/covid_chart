@@ -1,14 +1,18 @@
 <template>
   <div class="ChartWrapper">
     <form class="select_from" @submit.prevent="onSubmit">
-      <dynamic-select
-        v-model="selectedObject"
-        :options="optionsObjArr"
-        option-value="Slug"
-        option-text="Country"
-        placeholder="Select Country"
-      />
-      <button type="submit">Ok</button>
+      <div class="select_input">
+        <dynamic-select
+          v-model="selectedObject"
+          :options="optionsObjArr"
+          option-value="Slug"
+          option-text="Country"
+          placeholder="Select Country"
+        />
+      </div>
+      <div class="select_button">
+        <button type="submit">Ok</button>
+      </div>
     </form>
     <DayPlus v-if="loaded" :day-data="lustDayData" />
     <div class="chart_container">
@@ -73,7 +77,7 @@ export default {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Value'
+                labelString: 'Thousands of people'
               }
             }
           ]
@@ -118,6 +122,7 @@ export default {
       try {
         const response = await fetch(url, requestOptions)
         this.responseArr = await response.json()
+        console.log(new Date(this.responseArr[this.responseArr.length-1].Date))
       } catch (e) {
         throw new Error(e.message)
       }
@@ -129,15 +134,16 @@ export default {
       const ConfirmedArr = []
       const DeathsArr = []
       const RecoveredArr = []
+      const totalDays = this.responseArr.length
       this.responseArr.forEach((day) => {
         iterator++
-        if (iterator < this.responseArr.length - LastNdays) {
+        if ( iterator < this.responseArr.length - LastNdays) {
           return
         }
         daysArr.push(this.ConvertDate(day.Date))
         ConfirmedArr.push(day.Confirmed)
-        DeathsArr.push(day.Deaths)
         RecoveredArr.push(day.Recovered)
+        DeathsArr.push(day.Deaths)
       })
       let Pop = 0
       if (this.selectedObject) {
@@ -160,7 +166,12 @@ export default {
         lustRecovered:
           RecoveredArr[RecoveredArr.length - 2] -
           RecoveredArr[RecoveredArr.length - 3],
-        population: Pop
+        population: Pop,
+        country: this.selectedObject.Country,
+        totalConfirmed: ConfirmedArr[ConfirmedArr.length - 1],
+        totalRecovered: RecoveredArr[RecoveredArr.length - 1],
+        totalDeaths: DeathsArr[DeathsArr.length - 1],
+        totalDays
       }
       this.datacollection = {
         labels: daysArr,
@@ -214,6 +225,18 @@ export default {
 
 <style>
 .select_from {
-  max-width: 20 rem;
+  margin: auto;
+  display: flex;
+  width: 250px;
+}
+.select_input {
+  flex: 1;
+}
+.select_button {
+  display: block;
+  flex: 0;
+}
+.select_button button {
+  height: 100%;
 }
 </style>

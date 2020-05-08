@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <p>New day statistic: {{ dayData.population }}</p>
+    <p>
+      Statistic for {{ dayData.country }}: <br>
+      Confirmed {{dayData.totalConfirmed}} of {{dayData.population}}000 ({{Math.round( dayData.totalConfirmed*100/dayData.population )/100}}%) in {{dayData.totalDays}} days
+    </p>
     <div class="summary">
       <DayInfo :current="dayData.newConfirmed" :change="confirmedChange">
         Confirmed
@@ -34,7 +37,12 @@ export default {
           lustConfirmed: 0,
           lustRecovered: 0,
           lustDeaths: 0,
-          population: 0
+          population: 0,
+          country: '',
+          totalConfirmed: 0,
+          totalRecovered: 0 ,
+          totalDeaths: 0,
+          totalDays: 0
         }
       },
       required: true
