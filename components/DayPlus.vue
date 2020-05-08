@@ -1,21 +1,15 @@
 <template>
   <div class="container">
-    <p>New day statistic: {{dayData.population}}</p>
+    <p>New day statistic: {{ dayData.population }}</p>
     <div class="summary">
-      <DayInfo 
-        :current="dayData.newConfirmed"
-        :change="confirmedChange">
+      <DayInfo :current="dayData.newConfirmed" :change="confirmedChange">
         Confirmed
       </DayInfo>
-      <DayInfo
-        :current="dayData.newRecovered"
-        :change="recoveredChange">
+      <DayInfo :current="dayData.newRecovered" :change="recoveredChange">
         Recovered
       </DayInfo>
-      <DayInfo
-        :current="dayData.newDeaths"
-        :change="deathsChange">
-        Confirmed
+      <DayInfo :current="dayData.newDeaths" :change="deathsChange">
+        Deaths
       </DayInfo>
     </div>
   </div>
@@ -64,7 +58,7 @@ export default {
 </script>
 
 <style>
-.container{
+.container {
   display: block;
 }
 .summary {

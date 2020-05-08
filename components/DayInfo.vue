@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <slot/> {{ current_view }} (<span v-if="current_change >= 0">+</span>
+    <slot /> {{ current_view }} (<span v-if="current_change >= 0">+</span>
     {{ current_change }})
   </div>
 </template>
@@ -45,4 +45,5 @@ export default {
 .container {
   margin: 15px;
   padding: 15px;
-}</style>
+}
+</style>

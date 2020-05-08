@@ -1,9 +1,15 @@
 <template>
   <div class="ChartWrapper">
-    <form v-on:submit.prevent="onSubmit">
-      <input v-model="form_input" placeholder="country">
-      <button type="submit" valute=submit>submit</button>
-      </form>
+    <form class="select_from" @submit.prevent="onSubmit">
+      <dynamic-select
+        v-model="selectedObject"
+        :options="optionsObjArr"
+        option-value="Slug"
+        option-text="Country"
+        placeholder="Select Country"
+      />
+      <button type="submit">Ok</button>
+    </form>
     <DayPlus v-if="loaded" :day-data="lustDayData" />
     <div class="chart_container">
       <LineChart
@@ -17,19 +23,22 @@
 </template>
 
 <script>
-import LineChart from './LineChart.js'
+import DynamicSelect from 'vue-dynamic-select'
 import DayPlus from '~/components/DayPlus.vue'
-import {ApiMap} from '~/components/ApiSlugs.js'
+import LineChart from '~/components/LineChart.js'
+import { CountryArr } from '~/components/Countries.js'
 
 export default {
   name: 'LineChartContainer',
   components: {
-    LineChart,
-    DayPlus
+    DynamicSelect,
+    DayPlus,
+    LineChart
   },
   data() {
     return {
-      form_input: "",
+      optionsObjArr: [],
+      selectedObject: null,
       loaded: false,
       datacollection: {},
       lustDayData: {},
@@ -72,30 +81,40 @@ export default {
       }
     }
   },
+  computed: {},
   async mounted() {
+    this.optionsObjArr = CountryArr
     this.loaded = false
+    this.randomCountry()
     await this.getData()
     this.fillData()
     this.loaded = true
   },
   methods: {
+    randomCountry() {
+      let counter = 0
+      do {
+        const randomID = Math.round(this.optionsObjArr.length * Math.random())
+        this.selectedObject = this.optionsObjArr[randomID - 1]
+        counter++
+      } while (this.selectedObject.Population < 100 || counter > 100)
+    },
     async onSubmit() {
       this.loaded = false
-      await this.getData(this.form_input)
+      await this.getData()
       this.fillData()
       this.loaded = true
     },
-    async getData(country) {
-      this.form_input = country
+    async getData() {
+      const myHeaders = new Headers()
       const requestOptions = {
         method: 'GET',
+        headers: myHeaders,
         redirect: 'follow'
       }
-      if (!country) {
-        country = "russia"
-      }
-
-      const url = 'https://api.covid19api.com/total/dayone/country/'+ country
+      const url =
+        'https://api.covid19api.com/total/dayone/country/' +
+        this.selectedObject.Slug
       try {
         const response = await fetch(url, requestOptions)
         this.responseArr = await response.json()
@@ -104,7 +123,6 @@ export default {
       }
     },
     fillData() {
-      console.log(ApiMap.get("Russian Federation"))
       const LastNdays = 30
       let iterator = 0
       const daysArr = []
@@ -121,6 +139,10 @@ export default {
         DeathsArr.push(day.Deaths)
         RecoveredArr.push(day.Recovered)
       })
+      let Pop = 0
+      if (this.selectedObject) {
+        Pop = this.selectedObject.Population
+      }
       this.lustDayData = {
         newConfirmed:
           ConfirmedArr[ConfirmedArr.length - 1] -
@@ -138,7 +160,7 @@ export default {
         lustRecovered:
           RecoveredArr[RecoveredArr.length - 2] -
           RecoveredArr[RecoveredArr.length - 3],
-        population: ApiMap.get(this.responseArr[0].Country).Population
+        population: Pop
       }
       this.datacollection = {
         labels: daysArr,
@@ -190,4 +212,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.select_from {
+  max-width: 20 rem;
+}
+</style>
