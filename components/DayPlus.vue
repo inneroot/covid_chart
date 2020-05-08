@@ -2,7 +2,7 @@
   <div class="container">
     <p>
       Statistic for {{ dayData.country }}: <br>
-      Confirmed {{dayData.totalConfirmed}} of {{dayData.population}}000 ({{Math.round( dayData.totalConfirmed*100/dayData.population )/100}}%) in {{dayData.totalDays}} days
+      Confirmed {{dayData.totalConfirmed}} of {{dayData.population}}000 ({{Math.round( dayData.totalConfirmed/dayData.population*10 ) / 100 }}%) in {{dayData.totalDays}} days
     </p>
     <div class="summary">
       <DayInfo :current="dayData.newConfirmed" :change="confirmedChange">
