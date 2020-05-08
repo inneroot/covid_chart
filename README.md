@@ -2,6 +2,9 @@
 
 > covid chart from api
 
+Live on GitHub Pages:
+https://inneroot.github.io/covid_chart/
+
 ## Build Setup
 
 ```bash
