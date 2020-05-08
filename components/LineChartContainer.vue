@@ -8,10 +8,8 @@
           option-value="Slug"
           option-text="Country"
           placeholder="Select Country"
+          @input="onSubmit"
         />
-      </div>
-      <div class="select_button">
-        <button type="submit">Ok</button>
       </div>
     </form>
     <DayPlus v-if="loaded" :day-data="lustDayData" />
