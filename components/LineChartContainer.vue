@@ -148,12 +148,6 @@ export default {
       const RecoveredArr = []
       const totalDays = this.responseArr.length
       this.rangeMax = totalDays
-      if (totalDays > 30) {
-        this.rangeValue = 30
-      }
-      else {
-        this.rangeValue = totalDays
-      }
       this.responseArr.forEach((day) => {
         iterator++
         if (iterator < this.responseArr.length - LastNdays) {
