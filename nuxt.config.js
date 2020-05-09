@@ -19,8 +19,8 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
-        hid: 'description',
-        name: 'description',
+        hid: 'Covid19 Chart on Nuxt.js with Chart.js',
+        name: 'Covid19 Chart',
         content: process.env.npm_package_description || ''
       }
     ],
@@ -34,9 +34,11 @@ export default {
    */
   loading: { color: '#fff' },
   /*
-   ** Global CSS
+    Global CSS
    */
-  css: [],
+  css: [
+    '~/css/main.css'
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -69,5 +71,12 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  render: {
+    bundleRenderer: {
+      shouldPreload: (file, type) => {
+        return ['script', 'style', 'font'].includes(type)
+      }
+    }
   }
 }
