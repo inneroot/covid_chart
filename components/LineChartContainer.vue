@@ -99,9 +99,17 @@ export default {
   },
   computed: {},
   async mounted() {
-    this.optionsObjArr = CountryArr
     this.loaded = false
-    this.randomCountry()
+    this.optionsObjArr = CountryArr
+    if (localStorage.Country) {
+      this.selectedObject = this.optionsObjArr.find(element => element.Country === localStorage.Country)
+    }
+    else {
+      this.randomCountry()
+    }
+    if (localStorage.Range) {
+      this.rangeValue = localStorage.Range
+    }
     await this.getData()
     this.fillData()
     this.rangeMax = this.responseArr.length
@@ -118,6 +126,8 @@ export default {
     },
     async onSubmit() {
       this.loaded = false
+      localStorage.Range = this.rangeValue
+      localStorage.Country = this.selectedObject.Country
       await this.getData()
       this.fillData()
       this.loaded = true
