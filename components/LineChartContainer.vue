@@ -11,6 +11,17 @@
           @input="onSubmit"
         />
       </div>
+      <div>
+        <input
+          id="daysrange"
+          v-model="rangeValue"
+          type="range"
+          :min="rangeMin"
+          :max="rangeMax"
+          @change="onSubmit"
+        />
+        <label for="daysrange">{{ rangeValue }}</label>
+      </div>
     </form>
     <DayPlus v-if="loaded" :day-data="lustDayData" />
     <div class="chart_container">
@@ -39,6 +50,9 @@ export default {
   },
   data() {
     return {
+      rangeValue: 30,
+      rangeMax: 5,
+      rangeMin: 2,
       optionsObjArr: [],
       selectedObject: null,
       loaded: false,
@@ -90,6 +104,7 @@ export default {
     this.randomCountry()
     await this.getData()
     this.fillData()
+    this.rangeMax = this.responseArr.length
     this.loaded = true
   },
   methods: {
@@ -120,22 +135,28 @@ export default {
       try {
         const response = await fetch(url, requestOptions)
         this.responseArr = await response.json()
-        console.log(new Date(this.responseArr[this.responseArr.length-1].Date))
       } catch (e) {
         throw new Error(e.message)
       }
     },
     fillData() {
-      const LastNdays = 30
+      const LastNdays = this.rangeValue - 1
       let iterator = 0
       const daysArr = []
       const ConfirmedArr = []
       const DeathsArr = []
       const RecoveredArr = []
       const totalDays = this.responseArr.length
+      this.rangeMax = totalDays
+      if (totalDays > 30) {
+        this.rangeValue = 30
+      }
+      else {
+        this.rangeValue = totalDays
+      }
       this.responseArr.forEach((day) => {
         iterator++
-        if ( iterator < this.responseArr.length - LastNdays) {
+        if (iterator < this.responseArr.length - LastNdays) {
           return
         }
         daysArr.push(this.ConvertDate(day.Date))
@@ -225,7 +246,7 @@ export default {
 .select_from {
   margin: auto;
   display: flex;
-  width: 250px;
+  width: 50rem;
 }
 .select_input {
   flex: 1;
