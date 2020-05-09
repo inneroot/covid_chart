@@ -262,4 +262,7 @@ export default {
 .select_button button {
   height: 100%;
 }
+.vue-dynamic-select{
+  background: #fff;
+}
 </style>
