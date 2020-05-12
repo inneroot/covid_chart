@@ -11,24 +11,7 @@ export default {}
 <style>
 h1 {
   font-weight: 300;
-  font-size: 100px;
+  font-size: 4rem;
   letter-spacing: 1px;
-}
-.page-container {
-  margin: 0 auto;
-  display: block;
-  color: #35495e;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>

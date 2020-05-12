@@ -24,7 +24,7 @@
       </div>
     </form>
     <DayPlus v-if="loaded" :day-data="lustDayData" />
-    <div class="chart_container">
+    <div class="chart_container card">
       <LineChart
         v-if="loaded"
         :chart-data="datacollection"

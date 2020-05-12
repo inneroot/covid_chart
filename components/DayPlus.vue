@@ -5,13 +5,13 @@
       Confirmed {{dayData.totalConfirmed}} of {{dayData.population}}000 ({{Math.round( dayData.totalConfirmed/dayData.population*10 ) / 100 }}%) in {{dayData.totalDays}} days
     </p>
     <div class="summary">
-      <DayInfo :current="dayData.newConfirmed" :change="confirmedChange">
+      <DayInfo :current="dayData.newConfirmed" :change="confirmedChange" class="card">
         Confirmed
       </DayInfo>
-      <DayInfo :current="dayData.newRecovered" :change="recoveredChange">
+      <DayInfo :current="dayData.newRecovered" :change="recoveredChange"  class="card">
         Recovered
       </DayInfo>
-      <DayInfo :current="dayData.newDeaths" :change="deathsChange">
+      <DayInfo :current="dayData.newDeaths" :change="deathsChange" class="card">
         Deaths
       </DayInfo>
     </div>
@@ -71,5 +71,6 @@ export default {
 }
 .summary {
   display: flex;
+  justify-content: space-around;
 }
 </style>

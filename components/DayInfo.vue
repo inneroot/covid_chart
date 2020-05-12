@@ -41,9 +41,4 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  margin: 15px;
-  padding: 15px;
-}
-</style>
+<style></style>
