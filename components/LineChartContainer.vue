@@ -1,29 +1,20 @@
 <template>
   <div class="ChartWrapper">
-    <form class="select_from" @submit.prevent="onSubmit">
-      <div class="select_input">
-        <dynamic-select
-          v-model="selectedObject"
-          :options="optionsObjArr"
-          option-value="Slug"
-          option-text="Country"
-          placeholder="Select Country"
-          @input="onSubmit"
-        />
+    <div class="card">
+      <div class="select_from" @submit.prevent="onSubmit">
+        <div class="select_input">
+          <dynamic-select
+            v-model="selectedObject"
+            :options="optionsObjArr"
+            option-value="Slug"
+            option-text="Country"
+            placeholder="Select Country"
+            @input="onSubmit"
+          />
+        </div>
       </div>
-      <div>
-        <input
-          id="daysrange"
-          v-model="rangeValue"
-          type="range"
-          :min="rangeMin"
-          :max="rangeMax"
-          @change="onSubmit"
-        />
-        <label for="daysrange">{{ rangeValue }}</label>
-      </div>
-    </form>
-    <DayPlus v-if="loaded" :day-data="lustDayData" />
+      <DayPlus v-if="loaded" :day-data="lustDayData" />    
+    </div>
     <div class="chart_container card">
       <LineChart
         v-if="loaded"
@@ -31,6 +22,17 @@
         :options="chartOptions"
       />
       <p v-else>Loading data ...</p>
+    </div>
+    <div class="daysrange card">
+      <input
+        id="daysrange"
+        v-model="rangeValue"
+        type="range"
+        :min="rangeMin"
+        :max="rangeMax"
+        @change="onSubmit"
+      />
+      <label for="daysrange">{{ rangeValue }} days chart</label>
     </div>
   </div>
 </template>
@@ -208,15 +210,15 @@ export default {
           },
           {
             label: 'Recovered',
-            backgroundColor: 'rgba(75, 192, 192, 0.5)',
-            borderColor: '#4BC0C0',
+            backgroundColor: 'rgba(69, 211, 153, 0.5)',
+            borderColor: '#45D399',
             fill: true,
             data: RecoveredArr
           },
           {
             label: 'Confirmed',
-            backgroundColor: 'rgba(255, 99, 132, 0.1)',
-            borderColor: '#FF3E68',
+            backgroundColor: 'rgba(234, 98, 40, 0.1)',
+            borderColor: '#EA6228',
             fill: true,
             data: ConfirmedArr
           }
@@ -246,23 +248,4 @@ export default {
 }
 </script>
 
-<style>
-.select_from {
-  margin: auto;
-  display: flex;
-  width: 50rem;
-}
-.select_input {
-  flex: 1;
-}
-.select_button {
-  display: block;
-  flex: 0;
-}
-.select_button button {
-  height: 100%;
-}
-.vue-dynamic-select{
-  background: #fff;
-}
-</style>
+<style></style>

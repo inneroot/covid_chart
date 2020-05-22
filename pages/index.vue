@@ -8,10 +8,4 @@
 export default {}
 </script>
 
-<style>
-h1 {
-  font-weight: 300;
-  font-size: 4rem;
-  letter-spacing: 1px;
-}
-</style>
+<style></style>

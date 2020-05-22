@@ -1,9 +1,9 @@
 <template>
   <nav>
     <ul>
-      <li><nuxt-link to="/">Home</nuxt-link></li>
-      <li><nuxt-link to="/mainchart">Chart</nuxt-link></li>
-      <li><nuxt-link to="/about">About</nuxt-link></li>
+      <nuxt-link to="/"><li>Home</li></nuxt-link>
+      <nuxt-link to="/mainchart"><li>Chart</li></nuxt-link>
+      <nuxt-link to="/about"><li>About</li></nuxt-link>
     </ul>
   </nav>
 </template>
@@ -12,12 +12,4 @@
   export default {}
 </script>
 
-<style>
-ul {
-  display: flex;
-}
-ul li {
-  display: block;
-  padding: 1rem;
-}
-</style>
+<style></style>
