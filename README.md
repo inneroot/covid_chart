@@ -1,12 +1,12 @@
 <h3 align="center">
-    <img src="https://user-images.githubusercontent.com/30767528/81419142-155b4100-914e-11ea-913b-cb9f0cccd4e2.png" width="500" alt="preview">
+    <img src="https://raw.githubusercontent.com/inneroot/covid_chart/master/readme.png" width="500" alt="preview">
 </h3>
 
 <h3 align="center">
     Covid19 chart from API
 </h3>
 
-##Live
+## Live
 Livedemo on GitHub Pages:
 https://inneroot.github.io/covid_chart/
 
