@@ -1,9 +1,24 @@
-# covid_chart
+<h3 align="center">
+    <img src="https://user-images.githubusercontent.com/30767528/81419142-155b4100-914e-11ea-913b-cb9f0cccd4e2.png" width="500" alt="preview">
+</h3>
 
-> covid chart from api
+<h3 align="center">
+    Covid19 chart from API
+</h3>
 
-Live on GitHub Pages:
+##Live
+Livedemo on GitHub Pages:
 https://inneroot.github.io/covid_chart/
+
+## Tec stack
+#Nuxt.js
+https://nuxtjs.org/
+#Vuex.js
+https://vuex.vuejs.org/
+#Charts.js
+https://www.chartjs.org/
+#API
+https://covid19api.com/
 
 ## Build Setup
 
@@ -21,5 +36,3 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

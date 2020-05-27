@@ -13,15 +13,15 @@
           />
         </div>
       </div>
-      <!--DayPlus v-if="loaded" :day-data="lustDayData" /-->    
+      <!--DayPlus v-if="loaded" :day-data=" " /-->    
     </div>
     <div class="chart_container card">
       <LineChart
         v-if="loaded"
-        :chart-data="datacollection"
+        :chart-data="this.$store.getters.collectionForChart"
         :options="chartOptions"
       />
-      <p v-else>Loading data ...</p>
+      <p v-else>{{ this.message }}</p>
     </div>
     <div class="daysrange card" v-if="loaded">
       <input
@@ -42,7 +42,6 @@ import DynamicSelect from 'vue-dynamic-select'
 // import DayPlus from '~/components/DayPlus.vue'
 import LineChart from '~/components/LineChart'
 import {CountryArr} from '~/components/Countries'
-// import Dataset from '~/services/dataprocessing'
 
 
 export default {
@@ -54,6 +53,7 @@ export default {
   },
   data() {
     return {
+      message: "Loading data ...",
       rangeValue: 30,
       rangeMax: 5,
       rangeMin: 2,
@@ -101,6 +101,7 @@ export default {
   computed: {},
   mounted() {
     this.loaded = false
+    this.message = "Loading data ..."
     this.optionsObjArr = CountryArr
     if (localStorage.Country) {
       this.selectedObject = this.optionsObjArr.find(element => element.Country === localStorage.Country)
@@ -128,8 +129,11 @@ export default {
         this.rangeValue = localStorage.Range = 2
         this.$store.dispatch('setRange', this.rangeValue)
       }
-      this.datacollection = this.$store.getters.collectionForChart
-      if (this.datacollection) this.loaded = true
+      if (this.$store.getters.collectionForChart) {
+        this.loaded = true
+      } else {
+        this.message = "No data for this country!"
+      }
     },
     randomCountry() {
       let counter = 0
