@@ -11,13 +11,13 @@ Livedemo on GitHub Pages:
 https://inneroot.github.io/covid_chart/
 
 ## Tec stack
-# Nuxt.js
+* Nuxt.js
 https://nuxtjs.org/
-# Vuex.js
+* Vuex.js
 https://vuex.vuejs.org/
-# Charts.js
+* Charts.js
 https://www.chartjs.org/
-# API
+* API
 https://covid19api.com/
 
 ## Build Setup
