@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512px"
+   height="512px"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg21"
+   sodipodi:docname="vuex.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata27">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs25" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview23"
+     showgrid="false"
+     inkscape:zoom="0.4609375"
+     inkscape:cx="-42.305085"
+     inkscape:cy="256"
+     inkscape:window-x="1672"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="outer" />
+  <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+  <title
+     id="title2">Slice</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <g
+     id="Page-1"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <g
+       id="outer"
+       transform="translate(20.000000, 84.000000)"
+       fill-rule="nonzero">
+      <g
+         id="vuex-logo"
+         transform="matrix(1.5309961,0,0,1.5309961,39.672588,-46.692544)">
+        <g
+           id="vue-logo">
+          <g
+             id="Group"
+             transform="matrix(1,0,0,-1,0,225)">
+            <g
+               transform="translate(0.078199,0.013109)"
+               id="Path"
+               style="fill:#41b883">
+              <polygon
+                 points="128.15688,0.22362155 256.0909,223.10028 157.70188,223.10028 128.15688,171.62969 98.611895,223.10028 0.22286794,223.10028 "
+                 id="polygon7" />
+            </g>
+            <g
+               transform="translate(51.436536,89.153285)"
+               id="g12"
+               style="fill:#34495e">
+              <polygon
+                 points="76.798548,0.2367304 153.55896,133.9601 106.34354,133.9601 76.798548,82.489517 47.253558,133.9601 0.038138172,133.9601 "
+                 id="polygon10" />
+            </g>
+          </g>
+        </g>
+        <path
+           d="M 75.55,258.5 H 83 l 6.1,15.6 h 0.35 L 95.6,258.5 H 103 L 92.45,283 H 86 Z m 47.4,21.3 h -0.4 c -0.76667,1.23334 -1.79999,2.20833 -3.1,2.925 -1.30001,0.71667 -2.78333,1.075 -4.45,1.075 -3.10001,0 -5.40833,-0.94999 -6.925,-2.85 -1.51667,-1.90001 -2.275,-4.43332 -2.275,-7.6 V 258.5 h 6.55 v 14.05 c 0,1.76667 0.39166,3.075 1.175,3.925 0.78334,0.85 1.92499,1.275 3.425,1.275 0.9,0 1.69166,-0.19167 2.375,-0.575 0.68334,-0.38333 1.26666,-0.9 1.75,-1.55 0.48334,-0.65 0.85,-1.41666 1.1,-2.3 0.25,-0.88334 0.375,-1.825 0.375,-2.825 v -12 h 6.55 V 283 h -6.15 z m 34.7,-2.7 c -1.13334,2.00001 -2.65832,3.61666 -4.575,4.85 -1.91668,1.23334 -4.25832,1.85 -7.025,1.85 -1.86668,0 -3.59166,-0.325 -5.175,-0.975 -1.58334,-0.65 -2.95833,-1.55833 -4.125,-2.725 -1.16667,-1.16667 -2.075,-2.54166 -2.725,-4.125 -0.65,-1.58334 -0.975,-3.32499 -0.975,-5.225 0,-1.76668 0.31666,-3.44166 0.95,-5.025 0.63334,-1.58334 1.51666,-2.96666 2.65,-4.15 1.13334,-1.18334 2.47499,-2.125 4.025,-2.825 1.55001,-0.7 3.25832,-1.05 5.125,-1.05 1.96668,0 3.71666,0.325 5.25,0.975 1.53334,0.65 2.81666,1.54999 3.85,2.7 1.03334,1.15001 1.81666,2.50833 2.35,4.075 0.53334,1.56668 0.8,3.26666 0.8,5.1 v 0.6 c -0.0333,0.2 -0.05,0.38333 -0.05,0.55 -0.0333,0.16667 -0.05,0.35 -0.05,0.55 H 139.5 c 0.13333,1 0.40833,1.85833 0.825,2.575 0.41667,0.71667 0.93333,1.31666 1.55,1.8 0.61667,0.48334 1.29166,0.83333 2.025,1.05 0.73334,0.21667 1.48333,0.325 2.25,0.325 1.50001,0 2.74166,-0.34166 3.725,-1.025 0.98334,-0.68334 1.75833,-1.54166 2.325,-2.575 z m -5.95,-9.5 c -0.0333,-0.43333 -0.175,-0.91666 -0.425,-1.45 -0.25,-0.53334 -0.61666,-1.03333 -1.1,-1.5 -0.48334,-0.46667 -1.08333,-0.85 -1.8,-1.15 -0.71667,-0.3 -1.575,-0.45 -2.575,-0.45 -1.40001,0 -2.63333,0.4 -3.7,1.2 -1.06667,0.8 -1.81667,1.91666 -2.25,3.35 z m 16.15,2.95 -8.4,-12.05 h 7.75 l 4.45,6.8 H 172 l 4.2,-6.8 h 8 l -8.6,12.05 8.6,12.45 h -7.7 l -4.6,-7 h -0.35 l -4.45,7 h -7.75 z"
+           id="vuex"
+           inkscape:connector-curvature="0"
+           style="fill:#34495e" />
+      </g>
+    </g>
+  </g>
+</svg>
