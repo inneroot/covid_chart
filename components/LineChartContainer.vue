@@ -1,6 +1,6 @@
 <template>
   <div class="ChartWrapper">
-    <div class="card">
+    <div class="card shadow">
       <div class="select_from">
         <div class="select_input">
           <dynamic-select
@@ -15,7 +15,7 @@
       </div>
       <!--DayPlus v-if="loaded" :day-data=" " /-->    
     </div>
-    <div class="chart_container card">
+    <div class="chart_container card shadow">
       <LineChart
         v-if="loaded"
         :chart-data="this.$store.getters.collectionForChart"
@@ -23,7 +23,7 @@
       />
       <p v-else>{{ this.message }}</p>
     </div>
-    <div class="daysrange card" v-if="loaded">
+    <div class="daysrange card shadow" v-if="loaded">
       <input
         id="daysrange"
         v-model="rangeValue"

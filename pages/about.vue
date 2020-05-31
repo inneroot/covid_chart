@@ -1,22 +1,32 @@
 <template>
   <div class="page-container">
     <div>
-      <Logo />
-      <h2>This is a portfolio project </h2>
-      <p>My upwork page <a href="https://www.upwork.com/o/profiles/users/~012f97300628c4689c/">here</a></p>
+      <div class="cards">
+        <Flipcard :frontPic="PicSrc('nuxt.svg')" back-html="<a href='https://nuxtjs.org/' rel='nofollow'>Nuxt.js</a>" />
+        <Flipcard :frontPic="PicSrc('vuex.svg')" back-html="<a href='https://vuex.vuejs.org/' rel='nofollow'>Vuex.js</a>" />
+        <Flipcard :frontPic="PicSrc('chartjs.svg')" back-html="<a href='https://www.chartjs.org/' rel='nofollow'>Chart.js</a>" />
+        <Flipcard :frontPic="PicSrc('covid19api.png')" back-html="<a href='https://covid19api.com/' rel='nofollow'>covid19api</a>" />
+      </div>
+      <Profile />
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Flipcard from '~/components/Flipcard.vue'
+import Profile from '~/components/Profile.vue'
 
 export default {
   name: 'LineChartContainer',
   components: {
-    Logo
+    Flipcard,
+    Profile
+  },
+  methods: {
+    PicSrc(link) {
+      return require(`~/assets/${link}`)
+    },
   }
-
 }
 </script>
 
